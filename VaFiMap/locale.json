@@ -10,7 +10,8 @@
             "Low Filter active": "Unterer Filter nutzen",
             "High Filter active": "Oberer Filter nutzen",
             "Filter all values lower then this value": "Filter alle Werte kleiner gleich",
-            "Filter all values higher then this value": "Filter alle Werte größer gleich"
+            "Filter all values higher then this value": "Filter alle Werte größer gleich",
+            "Variable-Filter-Mapping": "Variablen-Filter-Mapping"
         }
     }
 }

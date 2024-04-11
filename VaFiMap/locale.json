@@ -4,7 +4,8 @@
             "Source": "Quelle",
             "Value": "Wert",
             "VaFiMap": "Variable Filter Mapping",
-            "No Source Variable selected": "Keine Quellvariable ausgewählt"
+            "No Source Variable selected": "Keine Quellvariable ausgewählt",
+            "This module is only for the not Commercial use!": "Dieses Modul darf Ausschließlich für den nicht Kommerziellen einsatz genutzt werden!"
         }
     }
 }

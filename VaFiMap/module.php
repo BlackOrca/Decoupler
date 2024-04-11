@@ -10,7 +10,7 @@ class VaFiMap extends IPSModule
 
         $this->RegisterPropertyInteger('Source', 0);
         
-        $this->RegisterVariableFloat('Value', $this->Translate('Value'), '', 0);        
+        //$this->RegisterVariableFloat('Value', $this->Translate('Value'), '', 0);        
     }
 
     public function Destroy()
@@ -33,6 +33,10 @@ class VaFiMap extends IPSModule
         else {
             $this->SetStatus(102);
         }
+
+        $sourceInfo = IPS_GetVariable($sourceId);
+        
+        $this->MaintainVariable('Value', "Value", $sourceInfo['VariableType'], $sourceInfo['VariableProfile'], 1, true);
 
         //Unregister first
         foreach ($this->GetMessageList() as $senderID => $messages) {

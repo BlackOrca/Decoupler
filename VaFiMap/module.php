@@ -83,15 +83,15 @@ class VaFiMap extends IPSModule
 
         $sourceValue = GetValue($sourceId);
 
-        if($this->GetValue('IsLowFilterActive'))
+        if($this->ReadPropertyBoolean('IsLowFilterActive'))
         {
-            if($sourceValue <= $this->GetValue('LowFilterValue'))
+            if($sourceValue <= $this->ReadPropertyFloat('LowFilterValue'))
                 return false;
         }
 
-        if($this->GetValue('IsHighFilterActive'))
+        if($this->ReadPropertyBoolean('IsHighFilterActive'))
         {
-            if($sourceValue >= $this->GetValue('HighFilterValue'))
+            if($sourceValue >= $this->ReadPropertyFloat('HighFilterValue'))
                 return false;
         }
         

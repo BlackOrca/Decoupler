@@ -1,0 +1,20 @@
+{
+    "elements": [
+        {
+            "type": "SelectVariable",
+            "caption": "Source",
+            "name": "Source",
+            "validVariableTypes": [
+                1
+            ]
+        }
+    ],
+    "actions": [],
+    "status": [
+        {
+            "code": 200,
+            "icon": "error",
+            "caption": "No Source Variable selected"
+        }
+    ]
+}

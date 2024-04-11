@@ -10,7 +10,11 @@ class VaFiMap extends IPSModule
 
         $this->RegisterPropertyInteger('Source', 0);
         
-        //$this->RegisterVariableFloat('Value', $this->Translate('Value'), '', 0);        
+        $this->RegisterPropertyBoolean('IsLowFilterActive', false);
+        $this->RegisterPropertyFloat('LowFilterValue', 0);
+
+        $this->RegisterPropertyBoolean('IsHighFilterActive', false);
+        $this->RegisterPropertyFloat('HighFilterValue', 0);      
     }
 
     public function Destroy()
@@ -79,9 +83,18 @@ class VaFiMap extends IPSModule
 
         $sourceValue = GetValue($sourceId);
 
-        //Filter
-        //if Value Valid -> Map()
-        //else false
+        if($this->GetValue('IsLowFilterActive'))
+        {
+            if($sourceValue <= $this->GetValue('LowFilterValue'))
+                return false;
+        }
+
+        if($this->GetValue('IsHighFilterActive'))
+        {
+            if($sourceValue >= $this->GetValue('HighFilterValue'))
+                return false;
+        }
+        
         return $this->Map($sourceValue);
     }
 

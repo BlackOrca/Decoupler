@@ -1,0 +1,15 @@
+{
+    "id": "{3618fea5-0016-41d5-a366-dfe95d22767b}",
+    "name": "VaFiMap",
+    "type": 3,
+    "vendor": "",
+    "aliases": [
+        "Va-Fi-Map",
+        "Variable-Filter-Mapping"
+    ],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "VAFIMAP",
+    "url": "https://github.com/BlackOrca/VaFiMap"
+}

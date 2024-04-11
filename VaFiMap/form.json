@@ -28,7 +28,7 @@
             "type": "NumberSpinner", 
             "name": "HighFilterValue", 
             "caption": "Filter all values higher then this value"
-        },
+        }
     ],
     "actions": [
          { 

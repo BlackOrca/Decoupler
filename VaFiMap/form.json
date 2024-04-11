@@ -5,7 +5,8 @@
             "caption": "Source",
             "name": "Source",
             "validVariableTypes": [
-                1
+                1,
+                2
             ]
         }                    
     ],

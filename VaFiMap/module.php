@@ -34,9 +34,7 @@ class VaFiMap extends IPSModule
             $this->SetStatus(102);
         }
 
-        $sourceInfo = IPS_GetVariable($sourceId);
-        
-        $this->MaintainVariable('Value', "Value", $sourceInfo['VariableType'], $sourceInfo['VariableProfile'], 1, true);
+        $this->MaintainValueVariable($sourceId);
 
         //Unregister first
         foreach ($this->GetMessageList() as $senderID => $messages) {
@@ -57,6 +55,20 @@ class VaFiMap extends IPSModule
         if ($Message === VM_UPDATE) {
             $this->Filter();
         }
+    }
+
+    private function MaintainValueVariable($sourceId)
+    {
+        //Get Variable infos to define the output value type and profile
+        $sourceInfo = IPS_GetVariable($sourceId);
+        
+        $variableProfile = "";
+        if($sourceInfo['VariableCustomProfile'] != "")
+            $variableProfile = $sourceInfo['VariableCustomProfile'];
+        else if($sourceInfo['VariableProfile'] != "")
+            $variableProfile = $sourceInfo['VariableProfile'];
+           
+        $this->MaintainVariable('Value', "Value", $sourceInfo['VariableType'], $variableProfile, 1, true);
     }
 
     private function Filter(): bool

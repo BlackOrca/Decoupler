@@ -17,8 +17,7 @@
         { 
             "type": "NumberSpinner", 
             "name": "LowFilterValue", 
-            "caption": "Filter all values lower then this value",
-            "visible": "$GetValue('IsLowFilterActive');" 
+            "caption": "Filter all values lower then this value"
         },
         { 
             "type": "CheckBox", 
@@ -28,8 +27,7 @@
         { 
             "type": "NumberSpinner", 
             "name": "HighFilterValue", 
-            "caption": "Filter all values higher then this value",
-            "visible": "$GetValue('IsHighFilterActive');" 
+            "caption": "Filter all values higher then this value"
         },
     ],
     "actions": [

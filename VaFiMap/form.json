@@ -17,7 +17,8 @@
         { 
             "type": "NumberSpinner", 
             "name": "LowFilterValue", 
-            "caption": "Filter all values lower then this value"
+            "caption": "Filter all values lower then this value",
+            "moreDigits": true
         },
         { 
             "type": "CheckBox", 
@@ -27,7 +28,8 @@
         { 
             "type": "NumberSpinner", 
             "name": "HighFilterValue", 
-            "caption": "Filter all values higher then this value"
+            "caption": "Filter all values higher then this value",
+            "moreDigits": true
         }
     ],
     "actions": [

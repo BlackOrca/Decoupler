@@ -1,10 +1,25 @@
 {
     "elements": [
         {
+        "type": "RowLayout",
+            "items": [
+                { 
+                    "type": "CheckBox", 
+                    "name": "IsSelectedTypeLocked", 
+                    "caption": "Protect from Type or Profile Changing." 
+                },
+                { 
+                    "type": "Label", 
+                    "caption": "At first configure must this checkbox to off. After the Value Variable is created, then you can protect the variable." 
+                }
+            ]
+        },        
+        {
             "type": "SelectVariable",
             "caption": "Source Variable",
             "name": "Source",
             "validVariableTypes": [
+                0,
                 1,
                 2
             ]

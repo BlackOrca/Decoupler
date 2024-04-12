@@ -14,7 +14,10 @@ class Decoupler extends IPSModule
         $this->RegisterPropertyFloat('LowFilterValue', 0);
 
         $this->RegisterPropertyBoolean('IsHighFilterActive', false);
-        $this->RegisterPropertyFloat('HighFilterValue', 0);      
+        $this->RegisterPropertyFloat('HighFilterValue', 0);
+        
+        $this->RegisterAttributeInteger('SelectedType', 1);
+        $this->RegisterPropertyBoolean('IsSelectedTypeLocked', false);
     }
 
     public function Destroy()
@@ -63,6 +66,9 @@ class Decoupler extends IPSModule
 
     private function MaintainValueVariable($sourceId)
     {
+        if($this->ReadPropertyBoolean('IsSelectedTypeLocked'))
+            return;
+
         //Get Variable infos to define the output value type and profile
         $sourceInfo = IPS_GetVariable($sourceId);
         
@@ -71,8 +77,16 @@ class Decoupler extends IPSModule
             $variableProfile = $sourceInfo['VariableCustomProfile'];
         else if($sourceInfo['VariableProfile'] != "")
             $variableProfile = $sourceInfo['VariableProfile'];
-           
-        $this->MaintainVariable('Value', "Value", $sourceInfo['VariableType'], $variableProfile, 1, true);
+        
+        $this->UnregisterVariable('Value');
+        
+            //0: Boolean, 1: Integer, 2: Float, 3: String
+        if($sourceInfo['VariableType'] == 1) $this->RegisterVariableInteger('Value', 'Value', $variableProfile, 0);
+        else if($sourceInfo['VariableType'] == 2) $this->RegisterVariableFloat('Value', 'Value', $variableProfile, 0);
+        else if($sourceInfo['VariableType'] == 0) $this->RegisterVariableBoolean('Value', 'Value', $variableProfile, 0);
+        else return;
+
+        $this->WriteAttributeInteger('SelectedType', $sourceInfo['VariableType']);
     }
 
     private function Filter(): bool
@@ -83,16 +97,19 @@ class Decoupler extends IPSModule
 
         $sourceValue = GetValue($sourceId);
 
-        if($this->ReadPropertyBoolean('IsLowFilterActive'))
+        if($this->ReadAttributeInteger('SelectedType') == 1 || $this->ReadAttributeInteger('SelectedType') == 2)
         {
-            if($sourceValue <= $this->ReadPropertyFloat('LowFilterValue'))
-                return false;
-        }
+            if($this->ReadPropertyBoolean('IsLowFilterActive'))
+            {
+                if($sourceValue <= $this->ReadPropertyFloat('LowFilterValue'))
+                    return false;
+            }
 
-        if($this->ReadPropertyBoolean('IsHighFilterActive'))
-        {
-            if($sourceValue >= $this->ReadPropertyFloat('HighFilterValue'))
-                return false;
+            if($this->ReadPropertyBoolean('IsHighFilterActive'))
+            {
+                if($sourceValue >= $this->ReadPropertyFloat('HighFilterValue'))
+                    return false;
+            }
         }
         
         return $this->Map($sourceValue);
@@ -102,6 +119,9 @@ class Decoupler extends IPSModule
     {  
         $oldValue = $this->GetValue('Value');
         
+        //- 1 zu 1 
+        //Invertieren bool != bool oder *-1
+        //Immer Aktuallisieren oder nur bei werte änderung
         if($oldValue != $value) $this->SetValue('Value', $value);
       
         return true;

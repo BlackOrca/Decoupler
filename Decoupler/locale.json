@@ -15,7 +15,8 @@
             "At first configure must this checkbox to off.": "Beim ersten Konfigurieren muss die Checkbox aus sein. Wenn die Entkoppelte Variable erstellt ist dann kann die Checkbox eingeschaltet werden. Es verhindert das der Typ und das Profil der Enkoppelten Variable sich ändert, falls man eine andere Variable auswählt, die einen anderen Typ und/oder ein anderes Profil hat.",
             "Supported are Integer, Float and Boolean.": "Es werden Integer, Float und Boolean Variablen unterstützt.",
             "Filter are only for Integer and Floats. The Filter are working with <= and >=": "Filter werden nur für Integer und Floats berücksichtigt. Die Filter nutzen die <= (Kleiner-Gleich) und >= (Größer-Gleich) vergleichsfunktion.",
-            "Should the Value Inverted?": "Soll der Entkoppelte Wert Invertiert werden?"
+            "Should the Value Inverted?": "Soll der Entkoppelte Wert Invertiert werden?",
+            "Variable Decoupling": "Variablen Entkoppler"
         }
     }
 }

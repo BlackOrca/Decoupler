@@ -1,8 +1,8 @@
 {
     "id": "{4E0E3139-CEE6-4B11-BD1D-E7A23F7AAB0F}",
-    "name": "VaFiMap",
+    "name": "Decoupler",
     "author": "BlackOrca",
-    "url": "https://github.com/BlackOrca/VaFiMap",
+    "url": "https://github.com/BlackOrca/Decoupler",
     "compatibility": {
         "version": "6.0"
     },

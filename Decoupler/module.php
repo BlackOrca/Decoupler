@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-class VaFiMap extends IPSModule
+class Decoupler extends IPSModule
 {
     public function Create()
     {

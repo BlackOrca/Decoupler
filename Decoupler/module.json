@@ -1,16 +1,15 @@
 {
     "id": "{3618FEA5-0016-41D5-A366-DFE95D22767B}",
-    "name": "VaFiMap",
+    "name": "Decoupler",
     "type": 3,
     "vendor": "",
     "aliases": [
-        "Va-Fi-Map",
-        "Variable-Filter-Mapping",
-        "VaFiMap"
+        "Decoupler",
+        "Enkoppler"
     ],
     "parentRequirements": [],
     "childRequirements": [],
     "implemented": [],
-    "prefix": "VAFIMAP",
-    "url": "https://github.com/BlackOrca/VaFiMap"
+    "prefix": "DC",
+    "url": "https://github.com/BlackOrca/Decoupler"
 }

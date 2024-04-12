@@ -1,4 +1,4 @@
-# Va-Fi-Map for IP-Symcon
+# Entkoppler für IP-Symcon | Decoupler for IP-Symcon
 
 Mappe und Filter eine Variable zu einer neuen Variale.
 Dieses Modul zum Mappen einer Quellvariable zu einer neuen Variable. Das Entkoppelt die Variable von der "Quelle". Quellen können sich über die Zeit änder, aber DEINE Variablen in deinen Logiken (Scripte, Automationen...) sollten sich nicht ändern.

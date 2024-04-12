@@ -4,14 +4,13 @@
             "Source": "Quelle",
             "Source Variable": "Quellvariable",
             "Value": "Wert",
-            "VaFiMap": "Variable Filter Mapping",
+            "Decoupler": "Entkoppler",
             "No Source Variable selected": "Keine Quellvariable ausgewählt",
-            "This module is only for the not Commercial use!": "Dieses Modul darf Ausschließlich für den nicht Kommerziellen einsatz genutzt werden!",
+            "This module is only for the not Commercial use!": "Dieses Modul darf Ausschließlich für den nicht Kommerziellen Einsatz genutzt werden!",
             "Low Filter active": "Unterer Filter nutzen",
             "High Filter active": "Oberer Filter nutzen",
             "Filter all values lower then this value": "Filter alle Werte kleiner gleich",
-            "Filter all values higher then this value": "Filter alle Werte größer gleich",
-            "Variable-Filter-Mapping": "Variablen-Filter-Mapping"
+            "Filter all values higher then this value": "Filter alle Werte größer gleich"
         }
     }
 }

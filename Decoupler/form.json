@@ -64,6 +64,11 @@
             "name": "HighFilterValue", 
             "caption": "Filter all values higher then this value",
             "moreDigits": true
+        },
+        { 
+            "type": "CheckBox", 
+            "name": "UseValueInverting", 
+            "caption": "Should the Value Inverted?" 
         }
     ],
     "actions": [

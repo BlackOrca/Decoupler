@@ -18,6 +18,8 @@ class Decoupler extends IPSModule
         
         $this->RegisterAttributeInteger('SelectedType', 1);
         $this->RegisterPropertyBoolean('IsSelectedTypeLocked', false);
+
+        $this->RegisterPropertyBoolean('UseValueInverting', false);
     }
 
     public function Destroy()
@@ -122,7 +124,24 @@ class Decoupler extends IPSModule
         //- 1 zu 1 
         //Invertieren bool != bool oder *-1
         //Immer Aktuallisieren oder nur bei werte änderung
-        if($oldValue != $value) $this->SetValue('Value', $value);
+
+        if($this->ReadPropertyBoolean('UseValueInverting'))
+        {
+            if($oldValue != $value) $this->SetValue('Value', $value);
+        }
+        else
+        {
+            if($this->ReadAttributeInteger('SelectedType') == 1 || $this->ReadAttributeInteger('SelectedType') == 2)
+            {
+                $newValue = $value *-1;
+                if($newValue != $oldValue) $this->SetValue('Value', $newValue);
+            }
+            else if($this->ReadAttributeInteger('SelectedType') == 0)
+            {
+                $newBoolValue = !$value;
+                if($newValue != $oldValue) $this->SetValue('Value', $newValue);
+            }
+        }            
       
         return true;
     }    

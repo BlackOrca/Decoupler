@@ -12,7 +12,7 @@
             "Filter all values lower then this value": "Filter alle Werte kleiner gleich",
             "Filter all values higher then this value": "Filter alle Werte größer gleich",
             "Protect from Type or Profile Changing.": "Schütze die Entkoppelte Variable vor Typ und Profiländerung von der Quelle.",
-            "At first configure must this checkbox to off. After the Value Variable is created, then you can protect the variable for Type and Profile changeing.": "Beim ersten Konfigurieren muss die Checkbox aus sein. Wenn die Entkoppelte Variable erstellt ist dann kann die Checkbox eingeschaltet werden. Es verhindert das der Typ und das Profil der Enkoppelten Variable sich ändert, falls man eine andere Variable auswählt, die einen anderen Typ und/oder ein anderes Profil hat."
+            "At first configure must this checkbox to off.": "Beim ersten Konfigurieren muss die Checkbox aus sein. Wenn die Entkoppelte Variable erstellt ist dann kann die Checkbox eingeschaltet werden. Es verhindert das der Typ und das Profil der Enkoppelten Variable sich ändert, falls man eine andere Variable auswählt, die einen anderen Typ und/oder ein anderes Profil hat."
         }
     }
 }

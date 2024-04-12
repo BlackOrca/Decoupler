@@ -10,9 +10,14 @@
                 },
                 { 
                     "type": "Label", 
+                    "caption": "",
+                    "width": "30%"
+                },
+                { 
+                    "type": "Label", 
                     "caption": "At first configure must this checkbox to off. After the Value Variable is created, then you can protect the variable.",
                     "italic": true,
-                    "width": "30%"
+                    "width": "80%"
                 }
             ]
         },        

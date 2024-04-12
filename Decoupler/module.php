@@ -125,7 +125,7 @@ class Decoupler extends IPSModule
         //Invertieren bool != bool oder *-1
         //Immer Aktuallisieren oder nur bei werte änderung
 
-        if($this->ReadPropertyBoolean('UseValueInverting'))
+        if(!$this->ReadPropertyBoolean('UseValueInverting'))
         {
             if($oldValue != $value) $this->SetValue('Value', $value);
         }
@@ -139,7 +139,7 @@ class Decoupler extends IPSModule
             else if($this->ReadAttributeInteger('SelectedType') == 0)
             {
                 $newBoolValue = !$value;
-                if($newValue != $oldValue) $this->SetValue('Value', $newValue);
+                if($newBoolValue != $oldValue) $this->SetValue('Value', $newValue);
             }
         }            
       

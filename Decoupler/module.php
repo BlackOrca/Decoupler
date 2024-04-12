@@ -139,7 +139,7 @@ class Decoupler extends IPSModule
             else if($this->ReadAttributeInteger('SelectedType') == 0)
             {
                 $newBoolValue = !$value;
-                if($newBoolValue != $oldValue) $this->SetValue('Value', $newValue);
+                if($newBoolValue != $oldValue) $this->SetValue('Value', $newBoolValue);
             }
         }            
       

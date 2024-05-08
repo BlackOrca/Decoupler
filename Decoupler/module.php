@@ -48,12 +48,15 @@ class Decoupler extends IPSModule
         //Unregister first
         foreach ($this->GetMessageList() as $senderID => $messages) {
             foreach ($messages as $message) {
-                $this->UnregisterMessage($senderID, $message);
+                $this->UnregisterMessage($senderID, $message);                
             }
         }
-      
+        if($sourceId > 0)
+            $this->UnregisterReference($sourceId);
+
         //Register
         $this->RegisterMessage($sourceId, VM_UPDATE);
+        $this->RegisterReference($sourceId);
       
         $this->Filter();
     }

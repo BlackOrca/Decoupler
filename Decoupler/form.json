@@ -27,13 +27,15 @@
                         0,
                         1,
                         2
-                    ]
+                    ],
+                    "onChange": "DC_VariableSelected($id);"
                 },
                 {
                     "type": "Label",
                     "caption": "Supported are Integer, Float and Boolean.",
                     "italic": true,
-                    "width": "80%"
+                    "width": "80%",
+                    "name": "test"
                 }
             ]
         },

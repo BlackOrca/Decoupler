@@ -28,7 +28,7 @@
                         1,
                         2
                     ],
-                    "onChange": "DC_VariableSelected($id, $what);"
+                    "onChange": "DC_VariableSelected($id);"
                 },
                 {
                     "type": "Label",

@@ -149,7 +149,7 @@ class Decoupler extends IPSModule
         return true;
     }
 
-    public function VariableSelected($id, $what)
+    public function VariableSelected($id)
     {
         $this->UpdateFormField('test', 'visible', false);
     }

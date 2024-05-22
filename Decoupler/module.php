@@ -151,7 +151,7 @@ class Decoupler extends IPSModule
 
     public function VariableSelected($id)
     {
-        IPS_LogMessage("Ich bin hier...");
+        IPS_LogMessage("Ich bin hier...", "Hier!");
         $this->UpdateFormField('test', 'visible', false);
     }
 }

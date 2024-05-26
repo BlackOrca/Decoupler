@@ -151,7 +151,22 @@ class Decoupler extends IPSModule
 
     public function VariableSelected(int $id)
     {
-        $this->UpdateFormField('test', 'visible', false);
+        //$sourceId = $this->ReadPropertyInteger('Source');
+        $sourceType = IPS_GetVariable($id)['VariableType'];
+
+        switch($sourceType)
+        {
+            case VARIABLETYPE_BOOLEAN:
+                $this->UpdateFormField('IsLowFilterActive', 'visible', false);
+                $this->UpdateFormField('LowFilterValue', 'visible', false);
+                break;
+            case VARIABLETYPE_INTEGER:
+            case VARIABLETYPE_FLOAT:
+                $this->UpdateFormField('IsLowFilterActive', 'visible', true);
+                $this->UpdateFormField('LowFilterValue', 'visible', true);
+                break;
+        }
+        
     }
 
     public function GetConfigurationForm()
@@ -188,7 +203,8 @@ class Decoupler extends IPSModule
                                 0,
                                 1,
                                 2
-                            ]
+                            ],
+                            'onChange' => 'DC_VariableSelected($id, $Source)'
                         ],
                         [ //1
                             'type' => 'Label',

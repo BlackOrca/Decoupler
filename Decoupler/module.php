@@ -193,7 +193,7 @@ class Decoupler extends IPSModule
                                 1,
                                 2
                             ],
-                            'value': $sourceId
+                            'value' => $sourceId
                         ],
                         [ //1
                             'type' => 'Label',
@@ -256,14 +256,11 @@ class Decoupler extends IPSModule
                 [
                     'code' => 200,
                     'icon' => 'error',
-                    'caption': 'No Source Variable selected'
+                    'caption' => 'No Source Variable selected'
                 ]
             ]
         ];
-        
-        $form['elements'][0]['items'][0]['value'] = $this->ReadPropertyBoolean('IsSelectedTypeLocked');
-        $form['elements'][1]['items'][0]['value'] = $sourceId;
-
+                
         switch($sourceType == VARIABLETYPE_BOOLEAN)
         {
             case VARIABLETYPE_BOOLEAN:

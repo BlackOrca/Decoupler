@@ -149,7 +149,7 @@ class Decoupler extends IPSModule
         return true;
     }
 
-    public function VariableSelected($id)
+    public function VariableSelected(int $id)
     {
         $this->UpdateFormField('test', 'visible', false);
     }
@@ -206,31 +206,35 @@ class Decoupler extends IPSModule
                 [ //2
                     'type' => 'RowLayout',
                     'items' => [
-                        // [ //0
-                        //     'type' => 'CheckBox',
-                        //     'name' => 'IsLowFilterActive',
-                        //     'caption' => 'Low Filter Active'
-                        // ],
-                        // [ //1
-                        //     'type' => 'NumberSpinner',
-                        //     'name' => 'LowFilterValue',
-                        //     'caption' => 'Low Filter Value'
-                        // ]
+                        [ //0
+                            'type' => 'CheckBox',
+                            'name' => 'IsLowFilterActive',
+                            'caption' => 'Low Filter Active',
+                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                        ],
+                        [ //1
+                            'type' => 'NumberSpinner',
+                            'name' => 'LowFilterValue',
+                            'caption' => 'Low Filter Value',
+                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                        ]
                     ]
                 ],
                 [ //3
                     'type' => 'RowLayout',
                     'items' => [
-                        // [
-                        //     'type' => 'CheckBox',
-                        //     'name' => 'IsHighFilterActive',
-                        //     'caption' => 'High Filter Active'
-                        // ],
-                        // [
-                        //     'type' => 'NumberSpinner',
-                        //     'name' => 'HighFilterValue',
-                        //     'caption' => 'High Filter Value'
-                        // ]
+                        [
+                            'type' => 'CheckBox',
+                            'name' => 'IsHighFilterActive',
+                            'caption' => 'High Filter Active',
+                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                        ],
+                        [
+                            'type' => 'NumberSpinner',
+                            'name' => 'HighFilterValue',
+                            'caption' => 'High Filter Value',
+                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                        ]
                     ]
                 ],
                 [ //4
@@ -259,21 +263,7 @@ class Decoupler extends IPSModule
                     'caption' => 'No Source Variable selected'
                 ]
             ]
-        ];
-                
-        switch($sourceType == VARIABLETYPE_BOOLEAN)
-        {
-            case VARIABLETYPE_BOOLEAN:
-                break;
-            case VARIABLETYPE_INTEGER:
-            case VARIABLETYPE_FLOAT:
-                $form['elements'][2]['items'][0]['value'] = $this->ReadPropertyBoolean('IsLowFilterActive');
-                $form['elements'][2]['items'][1]['value'] = $this->ReadPropertyFloat('LowFilterValue');
-        
-                $form['elements'][3]['items'][0]['value'] = $this->ReadPropertyBoolean('IsHighFilterActive');
-                $form['elements'][3]['items'][1]['value'] = $this->ReadPropertyFloat('HighFilterValue');
-                break;
-        }     
+        ];   
 
         return json_encode($form);
     }

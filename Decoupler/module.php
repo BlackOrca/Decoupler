@@ -83,6 +83,15 @@ class Decoupler extends IPSModule
 
     private function FilterNumber($value): bool
     {
+        if($this->ReadPropertyBoolean('IsMaxValueChangeActive'))
+        {
+            $oldValue = $this->GetValue('Value');
+            $maxChange = $this->ReadPropertyFloat('MaxValueChange');            
+            $this->SendDebug('MaxChange', $maxChange, 0);
+            if(abs($oldValue - $value) > $maxChange)
+                return false;
+        }
+
         if($this->ReadPropertyBoolean('IsLowFilterActive'))
         {
             if($value <= $this->ReadPropertyFloat('LowFilterValue'))
@@ -92,14 +101,6 @@ class Decoupler extends IPSModule
         if($this->ReadPropertyBoolean('IsHighFilterActive'))
         {
             if($value >= $this->ReadPropertyFloat('HighFilterValue'))
-                return false;
-        }
-
-        if($this->ReadPropertyBoolean('IsMaxValueChangeActive'))
-        {
-            $oldValue = $this->GetValue('Value');
-            $maxChange = $this->ReadPropertyFloat('MaxValueChange');
-            if(abs($oldValue - $value) > $maxChange)
                 return false;
         }
 

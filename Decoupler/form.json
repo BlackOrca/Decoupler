@@ -1,4 +1,5 @@
 {
+    "elements": [],
     "actions": [        
         {
             "type": "RowLayout",

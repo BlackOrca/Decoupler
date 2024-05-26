@@ -210,8 +210,7 @@ class Decoupler extends IPSModule
         
         $isNumberVariable = $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT;
 
-        $form[] = [
-            'elements' => [
+        $form['elements'] = [
                 [ 
                     'type' => 'CheckBox',
                     'name' => 'IsSelectedTypeLocked',
@@ -281,8 +280,7 @@ class Decoupler extends IPSModule
                     'name' => 'UseValueInverting',
                     'caption' => $this->Translate('Should the Value Inverted?')
                 ]                
-            ]
-        ];   
+            ];   
 
         return json_encode($form);
     }

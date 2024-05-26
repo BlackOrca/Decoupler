@@ -182,11 +182,11 @@ class Decoupler extends IPSModule
                         [ //0
                             'type' => 'CheckBox',
                             'name' => 'IsSelectedTypeLocked',
-                            'caption' => 'Lock Selected Type'
+                            'caption' => $this->Translate('Lock Selected Type')
                         ],
                         [ //1                        
                             'type' => 'Label',
-                            'caption' => 'At first configure must this checkbox to off.',
+                            'caption' => $this->Translate('At first configure must this checkbox to off.'),
                             'italic' => true,
                             'width' => '80%'
                         ]
@@ -197,7 +197,7 @@ class Decoupler extends IPSModule
                     'items' => [                        
                         [ //0
                             'type' => 'SelectVariable',
-                            'caption' => 'Source Variable',
+                            'caption' => $this->Translate('Source Variable'),
                             'name' => 'Source',
                             'validVariableTypes' => [
                                 0,
@@ -208,28 +208,23 @@ class Decoupler extends IPSModule
                         ],
                         [ //1
                             'type' => 'Label',
-                            'caption' => 'Supported are Integer, Float and Boolean.',
+                            'caption' => $this->Translate('Supported are Integer, Float and Boolean.'),
                             'italic' => true,
                             'width' => '80%'
                         ]
                     ]
                 ],
-                [ //2
-                    'type' => 'RowLayout',
-                    'items' => [
-                        [ //0
-                            'type' => 'CheckBox',
-                            'name' => 'IsLowFilterActive',
-                            'caption' => 'Low Filter Active',
-                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                        ],
-                        [ //1
-                            'type' => 'NumberSpinner',
-                            'name' => 'LowFilterValue',
-                            'caption' => 'Low Filter Value',
-                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                        ]
-                    ]
+                [ //0
+                    'type' => 'CheckBox',
+                    'name' => 'IsLowFilterActive',
+                    'caption' => $this->Translate('Low Filter Active'),
+                    'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                ],
+                [ //1
+                    'type' => 'NumberSpinner',
+                    'name' => 'LowFilterValue',
+                    'caption' => $this->Translate('Low Filter Value'),
+                    'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
                 ]
                 //,
                 // [ //3

@@ -168,7 +168,7 @@ class Decoupler extends IPSModule
                     'caption' => 'This module is only for the not Commercial use!'
                 ]
             ]
-        ]
+        ];
         // $form = [
         //     'elements' => [
         //         [ //0

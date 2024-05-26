@@ -197,18 +197,21 @@ class Decoupler extends IPSModule
                 $this->UpdateFormField('LowFilterValue', 'visible', false);
                 $this->UpdateFormField('IsHighFilterActive', 'visible', false);
                 $this->UpdateFormField('HighFilterValue', 'visible', false);
+                $this->UpdateFormField('ListOfIgnoreValues', 'visible', false);                
                 break;
             case VARIABLETYPE_INTEGER:
                 $this->UpdateFormField('IsLowFilterActive', 'visible', true);
                 $this->UpdateFormField('LowFilterValue', 'visible', true);
                 $this->UpdateFormField('IsHighFilterActive', 'visible', true);
                 $this->UpdateFormField('HighFilterValue', 'visible', true);
+                $this->UpdateFormField('ListOfIgnoreValues', 'visible', true);
                 break;
             case VARIABLETYPE_FLOAT:
                 $this->UpdateFormField('IsLowFilterActive', 'visible', true);
                 $this->UpdateFormField('LowFilterValue', 'visible', true);
                 $this->UpdateFormField('IsHighFilterActive', 'visible', true);
                 $this->UpdateFormField('HighFilterValue', 'visible', true);
+                $this->UpdateFormField('ListOfIgnoreValues', 'visible', true);
                 break;
         }
 
@@ -230,6 +233,7 @@ class Decoupler extends IPSModule
         $form->elements[7]->visible = $isNumberVariable;
         $form->elements[8]->visible = $isNumberVariable;
         $form->elements[9]->visible = $isNumberVariable;
+        $form->elements[10]->visible = $isNumberVariable;
 
         return json_encode($form);
     }

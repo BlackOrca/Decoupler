@@ -176,29 +176,29 @@ class Decoupler extends IPSModule
                             'width' => '80%'
                         ]
                     ]
+                ],
+                [ //1
+                    'type' => 'RowLayout',
+                    'items' => [                        
+                        [ //0
+                            'type' => 'SelectVariable',
+                            'caption' => 'Source Variable',
+                            'name' => 'Source',
+                            'validVariableTypes' => [
+                                0,
+                                1,
+                                2
+                            ]
+                        ],
+                        [ //1
+                            'type' => 'Label',
+                            'caption' => 'Supported are Integer, Float and Boolean.',
+                            'italic' => true,
+                            'width' => '80%'
+                        ]
+                    ]
                 ]
-                // ,
-                // [ //1
-                //     'type' => 'RowLayout',
-                //     'items' => [                        
-                //         [ //0
-                //             'type' => 'SelectVariable',
-                //             'caption' => 'Source Variable',
-                //             'name' => 'Source',
-                //             'validVariableTypes' => [
-                //                 0,
-                //                 1,
-                //                 2
-                //             ]
-                //         ],
-                //         [ //1
-                //             'type' => 'Label',
-                //             'caption' => 'Supported are Integer, Float and Boolean.',
-                //             'italic' => true,
-                //             'width' => '80%'
-                //         ]
-                //     ]
-                // ],
+                //,
                 // [ //2
                 //     'type' => 'RowLayout',
                 //     'items' => [

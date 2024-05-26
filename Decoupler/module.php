@@ -232,12 +232,12 @@ class Decoupler extends IPSModule
                 //         //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
                 //         // ]
                 //     ]
-                ],
-                [ //4
-                    'type' => 'CheckBox',
-                    'name' => 'UseValueInverting',
-                    'caption' => 'Use Value Inverting'
-                ]                
+                // ],
+                // [ //4
+                //     'type' => 'CheckBox',
+                //     'name' => 'UseValueInverting',
+                //     'caption' => 'Use Value Inverting'
+                // ]                
             ],
             'actions' => [
                 'type' => 'RowLayout',

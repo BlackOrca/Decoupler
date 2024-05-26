@@ -149,10 +149,11 @@ class Decoupler extends IPSModule
         return true;
     }
 
-    public function VariableSelected(int $id)
+    public function VariableSelected(int $ident) : bool
     {
+        $this->SendDebug('VariableSelected', 'Ident: ' . $ident, 0);
         //$sourceId = $this->ReadPropertyInteger('Source');
-        $sourceType = IPS_GetVariable($id)['VariableType'];
+        $sourceType = IPS_GetVariable($ident)['VariableType'];
 
         switch($sourceType)
         {
@@ -166,7 +167,8 @@ class Decoupler extends IPSModule
                 $this->UpdateFormField('LowFilterValue', 'visible', true);
                 break;
         }
-        
+
+        return true;
     }
 
     public function GetConfigurationForm()

@@ -68,6 +68,32 @@
             "visible": false  
         },
         {
+            "type": "Tree",
+            "name": "ListOfIgnoreValues",
+            "caption": "List of ignored values",
+            "visible": false,
+            "rowCount": 5,
+            "add": true,
+            "delete": true,
+            "sort": {
+                "column": "Value",
+                "direction": "ascending"
+            },
+            "columns": [
+                {
+                "caption": "Value",
+                "name": "Value", 
+                "width": "75px",
+                "add": 0,
+                "edit": {
+                    "type": "NumberSpinner",
+                    "digits": 2
+                }
+            }
+            ],
+            "values": []
+        },
+        {
             "type": "CheckBox",
             "name": "UseValueInverting",
             "caption": "Should the Value Inverted?"

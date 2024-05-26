@@ -15,6 +15,7 @@
             "Max Value Change Active": "Maximale Wertänderung nutzen",
             "Filter all values lower then this value": "Filtert alle Werte Kleiner-Gleich",
             "Filter all values higher then this value": "Filtert alle Werte Größer-Gleich",
+            "List of ignored values": "Liste zu Ignorierende Werte",
             "Protect from Type or Profile Changing.": "Schütze die Entkoppelte Variable vor Typ und Profiländerung von der Quelle.",
             "At first configure must this checkbox to off.": "Beim ersten Konfigurieren muss die Checkbox aus sein. Wenn die Entkoppelte Variable erstellt ist dann kann die Checkbox eingeschaltet werden. Es verhindert das der Typ und das Profil der Enkoppelten Variable sich ändert, falls man eine andere Variable auswählt, die einen anderen Typ und/oder ein anderes Profil hat.",
             "Supported are Integer, Float and Boolean.": "Es werden Integer, Float und Boolean Variablen unterstützt.",

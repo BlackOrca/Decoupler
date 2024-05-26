@@ -18,6 +18,8 @@ class Decoupler extends IPSModule
 
         $this->RegisterPropertyBoolean('IsMaxValueChangeActive', false);
         $this->RegisterPropertyFloat('MaxValueChange', 0);
+
+        $this->RegisterPropertyString('ListOfIgnoreValues', '');
         
         $this->RegisterAttributeInteger('SelectedType', 1);
         $this->RegisterPropertyBoolean('IsSelectedTypeLocked', false);
@@ -83,10 +85,18 @@ class Decoupler extends IPSModule
 
     private function FilterNumber($value): bool
     {
+        $ignoreValues = @json_decode($this->ReadPropertyString('ListOfIgnoreValues'));
+
+        if($ignoreValues !== false)
+        {
+            if(in_array($value, $ignoreValues))
+                return false;
+        }
+
         if($this->ReadPropertyBoolean('IsMaxValueChangeActive'))
         {
             $oldValue = $this->GetValue('Value');
-            
+
             if($this->ReadPropertyBoolean('UseValueInverting'))
                 $oldValue = $oldValue * -1;
 

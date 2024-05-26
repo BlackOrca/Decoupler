@@ -174,10 +174,10 @@ class Decoupler extends IPSModule
                             'value' => $variableLocked
                         ],
                         [ //1                        
-                            "type": "Label",
-                            "caption": "At first configure must this checkbox to off.",
-                            "italic": true,
-                            "width": "80%"
+                            'type' => 'Label',
+                            'caption' => 'At first configure must this checkbox to off.',
+                            'italic' => true,
+                            'width' => '80%'
                         ]
                     ]
                 ],
@@ -185,15 +185,15 @@ class Decoupler extends IPSModule
                     'type' => 'RowLayout',
                     'items' => [                        
                         [ //0
-                            "type": "SelectVariable",
-                            "caption": "Source Variable",
-                            "name": "Source",
-                            "validVariableTypes": [
+                            'type' => 'SelectVariable',
+                            'caption' => 'Source Variable',
+                            'name' => 'Source',
+                            'validVariableTypes' => [
                                 0,
                                 1,
                                 2
                             ],
-                            "value": $sourceId
+                            'value': $sourceId
                         ],
                         [ //1
                             'type' => 'Label',

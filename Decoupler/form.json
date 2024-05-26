@@ -68,7 +68,7 @@
             "visible": false  
         },
         {
-            "type": "Tree",
+            "type": "List",
             "name": "ListOfIgnoreValues",
             "caption": "List of ignored values",
             "visible": false,
@@ -87,7 +87,7 @@
                 "add": 0,
                 "edit": {
                     "type": "NumberSpinner",
-                    "digits": 2
+                    "moreDigits": true
                 }
             }
             ],

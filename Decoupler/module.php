@@ -86,6 +86,10 @@ class Decoupler extends IPSModule
         if($this->ReadPropertyBoolean('IsMaxValueChangeActive'))
         {
             $oldValue = $this->GetValue('Value');
+            
+            if($this->ReadPropertyBoolean('UseValueInverting'))
+                $oldValue = $oldValue * -1;
+
             $maxChange = $this->ReadPropertyFloat('MaxValueChange');            
             $this->SendDebug('MaxChange', $maxChange, 0);
             if(abs($oldValue - $value) > $maxChange)

@@ -91,7 +91,7 @@ class Decoupler extends IPSModule
         {
             foreach($ignoreValues as $ignoreValue)
             {
-                if($value == $ignoreValue)
+                if($value == $ignoreValue['Value'])
                     return false;
             }
         }

@@ -159,7 +159,7 @@ class Decoupler extends IPSModule
         //$form = json_decode(file_get_contents(__DIR__ . '/form.json'), true);
 
         $sourceId = $this->ReadPropertyInteger('Source');
-        $sourceName = IPS_GetName($sourceId);
+        $variableLocked = $this->ReadPropertyBoolean('IsSelectedTypeLocked');
         $sourceType = IPS_GetVariable($sourceId)['VariableType'];
         
         $form = [
@@ -170,7 +170,8 @@ class Decoupler extends IPSModule
                         [ //0
                             'type' => 'CheckBox',
                             'name' => 'IsSelectedTypeLocked',
-                            'caption' => 'Lock Selected Type'
+                            'caption' => 'Lock Selected Type',
+                            'value' => $variableLocked
                         ],
                         [ //1                        
                             "type": "Label",
@@ -191,7 +192,8 @@ class Decoupler extends IPSModule
                                 0,
                                 1,
                                 2
-                            ]
+                            ],
+                            "value": $sourceId
                         ],
                         [ //1
                             'type' => 'Label',

@@ -201,35 +201,35 @@ class Decoupler extends IPSModule
                 [ //2
                     'type' => 'RowLayout',
                     'items' => [
-                        [ //0
-                            'type' => 'CheckBox',
-                            'name' => 'IsLowFilterActive',
-                            'caption' => 'Low Filter Active',
-                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                        ],
-                        [ //1
-                            'type' => 'NumberSpinner',
-                            'name' => 'LowFilterValue',
-                            'caption' => 'Low Filter Value',
-                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                        ]
+                        // [ //0
+                        //     'type' => 'CheckBox',
+                        //     'name' => 'IsLowFilterActive',
+                        //     'caption' => 'Low Filter Active',
+                        //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                        // ],
+                        // [ //1
+                        //     'type' => 'NumberSpinner',
+                        //     'name' => 'LowFilterValue',
+                        //     'caption' => 'Low Filter Value',
+                        //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                        // ]
                     ]
                 ],
                 [ //3
                     'type' => 'RowLayout',
                     'items' => [
-                        [
-                            'type' => 'CheckBox',
-                            'name' => 'IsHighFilterActive',
-                            'caption' => 'High Filter Active',
-                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                        ],
-                        [
-                            'type' => 'NumberSpinner',
-                            'name' => 'HighFilterValue',
-                            'caption' => 'High Filter Value',
-                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                        ]
+                        // [
+                        //     'type' => 'CheckBox',
+                        //     'name' => 'IsHighFilterActive',
+                        //     'caption' => 'High Filter Active',
+                        //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                        // ],
+                        // [
+                        //     'type' => 'NumberSpinner',
+                        //     'name' => 'HighFilterValue',
+                        //     'caption' => 'High Filter Value',
+                        //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                        // ]
                     ]
                 ],
                 [ //4

@@ -191,8 +191,7 @@ class Decoupler extends IPSModule
                                 0,
                                 1,
                                 2
-                            ],
-                            "onChange": "DC_VariableSelected($id, 'thatsit');"
+                            ]
                         ],
                         [ //1
                             'type' => 'Label',

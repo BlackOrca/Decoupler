@@ -178,6 +178,7 @@ class Decoupler extends IPSModule
                 $form['elements'][2]['items'][1]['value'] = $this->ReadPropertyFloat('HighFilterValue');
         
                 $form['elements'][3]['items'][0]['value'] = $this->ReadPropertyBoolean('UseValueInverting');
+                break;
         }     
 
         $form['elements'][4]['items'][0]['value'] = $this->ReadAttributeInteger('SelectedType');

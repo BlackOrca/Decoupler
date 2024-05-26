@@ -161,7 +161,7 @@ class Decoupler extends IPSModule
                 $this->UpdateFormField('IsLowFilterActive', 'visible', false);
                 $this->UpdateFormField('LowFilterValue', 'visible', false);
                 $this->UpdateFormField('IsHighFilterActive', 'visible', false);
-                $this->UpdateFormField('HigFilterValue', 'visible', false);
+                $this->UpdateFormField('HighFilterValue', 'visible', false);
                 break;
             case VARIABLETYPE_INTEGER:
                 $this->UpdateFormField('IsLowFilterActive', 'visible', true);
@@ -184,7 +184,7 @@ class Decoupler extends IPSModule
     {
         $sourceId = $this->ReadPropertyInteger('Source');
         $sourceType = IPS_GetVariable($sourceId)['VariableType'];
-        
+
         $form = json_decode(file_get_contents(__DIR__ . "/form.json"));
         
         $form = [
@@ -244,7 +244,7 @@ class Decoupler extends IPSModule
                 [ 
                     'type' => 'CheckBox',
                     'name' => 'UseValueInverting',
-                    'caption' => 'Use Value Inverting'
+                    'caption' => $this->Translate('Should the Value Inverted?')
                 ]                
             ]
         ];   

@@ -89,8 +89,11 @@ class Decoupler extends IPSModule
 
         if($ignoreValues !== false)
         {
-            if(in_array($value, $ignoreValues))
-                return false;
+            foreach($ignoreValues as $ignoreValue)
+            {
+                if($value == $ignoreValue)
+                    return false;
+            }
         }
 
         if($this->ReadPropertyBoolean('IsMaxValueChangeActive'))

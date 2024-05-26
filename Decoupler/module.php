@@ -210,87 +210,12 @@ class Decoupler extends IPSModule
         
         $isNumberVariable = $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT;
 
-        $form['elements'] = 
-                [ 
-                    'type' => 'CheckBox',
-                    'name' => 'IsSelectedTypeLocked',
-                    'caption' => $this->Translate('Protect from Type or Profile Changing.')
-                ];
-        $form['elements'] = 
-                [                      
-                    'type' => 'Label',
-                    'caption' => $this->Translate('At first configure must this checkbox to off.'),
-                    'italic' => true,
-                    'width' => '80%'
-                ];
-
-        $form['elements'] =
-                [ 
-                    'type' => 'Label',
-                    'caption' => $this->Translate('Supported are Integer, Float and Boolean.'),
-                    'italic' => true,
-                    'width' => '80%'
-                ];
-        $form['elements'] =
-                [ 
-                    'type' => 'SelectVariable',
-                    'caption' => $this->Translate('Source Variable'),
-                    'name' => 'Source',
-                    'validVariableTypes' => [
-                        0,
-                        1,
-                        2
-                    ],
-                    'onChange' => 'DC_VariableSelected($id, $Source);'
-                ];
-        $form['elements'] =
-                [ 
-                    'type' => 'CheckBox',
-                    'name' => 'IsLowFilterActive',
-                    'caption' => $this->Translate('Low Filter Active'),
-                    'visible' => $isNumberVariable
-                ];
-        $form['elements'] = 
-                [ 
-                    'type' => 'NumberSpinner',
-                    'name' => 'LowFilterValue',
-                    'caption' => $this->Translate('Low Filter Value'),
-                    'visible' => $isNumberVariable
-                ];
-        $form['elements'] = 
-                [
-                    'type' => 'CheckBox',
-                    'name' => 'IsHighFilterActive',
-                    'caption' => $this->Translate('High Filter Active'),
-                    'visible' => $isNumberVariable
-                ];
-        $form['elements'] =
-                [
-                    'type' => 'NumberSpinner',
-                    'name' => 'HighFilterValue',
-                    'caption' => $this->Translate('High Filter Value'),
-                    'visible' => $isNumberVariable
-                ];
-        $form['elements'] =
-                [
-                    'type' => 'CheckBox',
-                    'name' => 'IsMaxValueChangeActive',
-                    'caption' => $this->Translate('Max Value Change Active'),
-                    'visible' => $isNumberVariable
-                ];
-        $form['elements'] =
-                [
-                    'type' => 'NumberSpinner',
-                    'name' => 'MaxValueChange',
-                    'caption' => $this->Translate('Max Value Change'),
-                    'visible' => $isNumberVariable
-                ];
-        $form['elements'] =
-                [ 
-                    'type' => 'CheckBox',
-                    'name' => 'UseValueInverting',
-                    'caption' => $this->Translate('Should the Value Inverted?')
-                ];
+        $form['elements'][4]['visible'] = $isNumberVariable;
+        $form['elements'][5]['visible'] = $isNumberVariable;
+        $form['elements'][6]['visible'] = $isNumberVariable;
+        $form['elements'][7]['visible'] = $isNumberVariable;
+        $form['elements'][8]['visible'] = $isNumberVariable;
+        $form['elements'][9]['visible'] = $isNumberVariable;
 
         return json_encode($form);
     }

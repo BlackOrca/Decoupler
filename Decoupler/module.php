@@ -159,12 +159,13 @@ class Decoupler extends IPSModule
         $form = json_decode(file_get_contents(__DIR__ . '/form.json'), true);
 
         $sourceId = $this->ReadPropertyInteger('Source');
-        $sourceInfo = IPS_GetVariable($sourceId);
+        $sourceName = IPS_GetName($sourceId);
+        $sourceType = IPS_GetVariable($sourceId)['VariableType'];
 
         $form['elements'][0]['items'][0]['value'] = $sourceId;
-        $form['elements'][0]['items'][0]['caption'] = $sourceInfo['VariableName'];
+        $form['elements'][0]['items'][0]['caption'] = $sourceName;
 
-        switch($sourceInfo['VariableType'] == VARIABLETYPE_BOOLEAN)
+        switch($sourceType == VARIABLETYPE_BOOLEAN)
         {
             case VARIABLETYPE_BOOLEAN:
                 break;

@@ -21,7 +21,8 @@
             "Supported are Integer, Float and Boolean.": "Es werden Integer, Float und Boolean Variablen unterstützt.",
             "Filter are only for Integer and Floats. The Filter are working with <= and >=": "Filter werden nur für Integer und Floats berücksichtigt. Die Filter nutzen die <= (Kleiner-Gleich) und >= (Größer-Gleich) vergleichsfunktion.",
             "Should the Value Inverted?": "Soll der Entkoppelte Wert Invertiert werden?",
-            "Support me!": "Wenn Du mir einen ausgeben möchtest."
+            "Support me!": "Wenn Du mir einen ausgeben möchtest.",
+            "IMPORTANT: A combination of all Filters can be confusing. In case of Inverting it can be more confusing.": "WICHTIG: Eine Kombination aller Filter kann verwirrend sein. Bei Invertierung kann es noch verwirrender werden!"
         }
     }
 }

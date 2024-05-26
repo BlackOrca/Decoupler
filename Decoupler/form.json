@@ -8,8 +8,7 @@
         {
             "type": "Label",
             "caption": "At first configure must this checkbox to off.",
-            "italic": true,
-            "width": "80%"
+            "italic": true
         },
         {
             "type": "SelectVariable",
@@ -25,8 +24,7 @@
         {
             "type": "Label",
             "caption": "Supported are Integer, Float and Boolean.",
-            "italic": true,
-            "width": "80%"
+            "italic": true
         },
         {
             "type": "CheckBox",
@@ -97,6 +95,12 @@
             "type": "CheckBox",
             "name": "UseValueInverting",
             "caption": "Should the Value Inverted?"
+        },
+        {
+            "type": "Label",
+            "caption": "IMPORTANT: A combination of all Filters can be confusing. In case of Inverting it can be more confusing.",
+            "italic": true,
+            "bold": true
         }
     ],
     "actions": [        

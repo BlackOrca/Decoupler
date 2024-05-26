@@ -153,4 +153,35 @@ class Decoupler extends IPSModule
     {
         $this->UpdateFormField('test', 'visible', false);
     }
+
+    public function GetConfigurationForm()
+    {
+        $form = json_decode(file_get_contents(__DIR__ . '/form.json'), true);
+
+        $sourceId = $this->ReadPropertyInteger('Source');
+        $sourceInfo = IPS_GetVariable($sourceId);
+
+        $form['elements'][0]['items'][0]['value'] = $sourceId;
+        $form['elements'][0]['items'][0]['caption'] = $sourceInfo['VariableName'];
+
+        switch($sourceInfo['VariableType'] == VARIABLETYPE_BOOLEAN)
+        {
+            case VARIABLETYPE_BOOLEAN:
+                break;
+            case VARIABLETYPE_INTEGER:
+            case VARIABLETYPE_FLOAT:
+                $form['elements'][1]['items'][0]['value'] = $this->ReadPropertyBoolean('IsLowFilterActive');
+                $form['elements'][1]['items'][1]['value'] = $this->ReadPropertyFloat('LowFilterValue');
+        
+                $form['elements'][2]['items'][0]['value'] = $this->ReadPropertyBoolean('IsHighFilterActive');
+                $form['elements'][2]['items'][1]['value'] = $this->ReadPropertyFloat('HighFilterValue');
+        
+                $form['elements'][3]['items'][0]['value'] = $this->ReadPropertyBoolean('UseValueInverting');
+        }     
+
+        $form['elements'][4]['items'][0]['value'] = $this->ReadAttributeInteger('SelectedType');
+        $form['elements'][4]['items'][1]['value'] = $this->ReadPropertyBoolean('IsSelectedTypeLocked');
+
+        return json_encode($form);
+    }
 }

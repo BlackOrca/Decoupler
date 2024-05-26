@@ -204,13 +204,17 @@ class Decoupler extends IPSModule
                 $this->UpdateFormField('LowFilterValue', 'visible', false);
                 $this->UpdateFormField('IsHighFilterActive', 'visible', false);
                 $this->UpdateFormField('HighFilterValue', 'visible', false);
-                $this->UpdateFormField('ListOfIgnoreValues', 'visible', false);                
+                $this->UpdateFormField('IsMaxValueChangeActive', 'visible', false); 
+                $this->UpdateFormField('MaxValueChange', 'visible', false);    
+                $this->UpdateFormField('ListOfIgnoreValues', 'visible', false);                 
                 break;
             case VARIABLETYPE_INTEGER:
                 $this->UpdateFormField('IsLowFilterActive', 'visible', true);
                 $this->UpdateFormField('LowFilterValue', 'visible', true);
                 $this->UpdateFormField('IsHighFilterActive', 'visible', true);
                 $this->UpdateFormField('HighFilterValue', 'visible', true);
+                $this->UpdateFormField('IsMaxValueChangeActive', 'visible', true); 
+                $this->UpdateFormField('MaxValueChange', 'visible', true);    
                 $this->UpdateFormField('ListOfIgnoreValues', 'visible', true);
                 break;
             case VARIABLETYPE_FLOAT:
@@ -218,6 +222,8 @@ class Decoupler extends IPSModule
                 $this->UpdateFormField('LowFilterValue', 'visible', true);
                 $this->UpdateFormField('IsHighFilterActive', 'visible', true);
                 $this->UpdateFormField('HighFilterValue', 'visible', true);
+                $this->UpdateFormField('IsMaxValueChangeActive', 'visible', true); 
+                $this->UpdateFormField('MaxValueChange', 'visible', true);    
                 $this->UpdateFormField('ListOfIgnoreValues', 'visible', true);
                 break;
         }

@@ -15,6 +15,9 @@ class Decoupler extends IPSModule
 
         $this->RegisterPropertyBoolean('IsHighFilterActive', false);
         $this->RegisterPropertyFloat('HighFilterValue', 0);
+
+        $this->RegisterPropertyBoolean('IsMaxValueChangeActive', false);
+        $this->RegisterPropertyFloat('MaxValueChange', 0);
         
         $this->RegisterAttributeInteger('SelectedType', 1);
         $this->RegisterPropertyBoolean('IsSelectedTypeLocked', false);
@@ -61,6 +64,79 @@ class Decoupler extends IPSModule
         $this->Filter();
     }
 
+    private function Filter(): bool
+    {
+        $sourceId = $this->ReadPropertyInteger('Source');
+
+        if (!IPS_VariableExists($sourceId)) return false;
+
+        $sourceValue = GetValue($sourceId);
+
+        if($this->ReadAttributeInteger('SelectedType') == VARIABLETYPE_INTEGER || $this->ReadAttributeInteger('SelectedType') == VARIABLETYPE_FLOAT)
+        {
+            if(!$this->FilterNumber($sourceValue))
+                return false;
+        }        
+        
+        return $this->Map($sourceValue);
+    }
+
+    private function FilterNumber($value): bool
+    {
+        if($this->ReadPropertyBoolean('IsLowFilterActive'))
+        {
+            if($value <= $this->ReadPropertyFloat('LowFilterValue'))
+                return false;
+        }
+
+        if($this->ReadPropertyBoolean('IsHighFilterActive'))
+        {
+            if($value >= $this->ReadPropertyFloat('HighFilterValue'))
+                return false;
+        }
+
+        if($this->ReadPropertyBoolean('IsMaxValueChangeActive'))
+        {
+            $oldValue = $this->GetValue('Value');
+            $maxChange = $this->ReadPropertyFloat('MaxValueChange');
+            if(abs($oldValue - $value) > $maxChange)
+                return false;
+        }
+
+        return true;
+    }
+
+    private function Map($value): bool
+    {  
+        $oldValue = $this->GetValue('Value');
+        
+        //- 1 zu 1 
+        //Invertieren bool != bool oder *-1
+        //Immer Aktuallisieren oder nur bei werte änderung
+
+        if(!$this->ReadPropertyBoolean('UseValueInverting'))
+        {
+            if($oldValue != $value) $this->SetValue('Value', $value);
+            return true;
+        }        
+        
+        if($this->ReadAttributeInteger('SelectedType') == VARIABLETYPE_INTEGER || $this->ReadAttributeInteger('SelectedType') == VARIABLETYPE_FLOAT)
+        {
+            $newValue = $value *-1;
+            if($newValue != $oldValue) $this->SetValue('Value', $newValue);
+            return true;
+        }
+        
+        if($this->ReadAttributeInteger('SelectedType') == VARIABLETYPE_BOOLEAN)
+        {
+            $newBoolValue = !$value;
+            if($newBoolValue != $oldValue) $this->SetValue('Value', $newBoolValue);
+            return true;
+        }                
+    
+        return true;
+    }
+
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
     {
         $this->SendDebug('Sender ' . $SenderID, 'Message ' . $Message, 0);
@@ -92,67 +168,11 @@ class Decoupler extends IPSModule
         else return;
 
         $this->WriteAttributeInteger('SelectedType', $sourceInfo['VariableType']);
-    }
-
-    private function Filter(): bool
-    {
-        $sourceId = $this->ReadPropertyInteger('Source');
-
-        if (!IPS_VariableExists($sourceId)) return false;
-
-        $sourceValue = GetValue($sourceId);
-
-        if($this->ReadAttributeInteger('SelectedType') == 1 || $this->ReadAttributeInteger('SelectedType') == 2)
-        {
-            if($this->ReadPropertyBoolean('IsLowFilterActive'))
-            {
-                if($sourceValue <= $this->ReadPropertyFloat('LowFilterValue'))
-                    return false;
-            }
-
-            if($this->ReadPropertyBoolean('IsHighFilterActive'))
-            {
-                if($sourceValue >= $this->ReadPropertyFloat('HighFilterValue'))
-                    return false;
-            }
-        }
-        
-        return $this->Map($sourceValue);
-    }
-
-    private function Map($value): bool
-    {  
-        $oldValue = $this->GetValue('Value');
-        
-        //- 1 zu 1 
-        //Invertieren bool != bool oder *-1
-        //Immer Aktuallisieren oder nur bei werte änderung
-
-        if(!$this->ReadPropertyBoolean('UseValueInverting'))
-        {
-            if($oldValue != $value) $this->SetValue('Value', $value);
-        }
-        else
-        {
-            if($this->ReadAttributeInteger('SelectedType') == 1 || $this->ReadAttributeInteger('SelectedType') == 2)
-            {
-                $newValue = $value *-1;
-                if($newValue != $oldValue) $this->SetValue('Value', $newValue);
-            }
-            else if($this->ReadAttributeInteger('SelectedType') == 0)
-            {
-                $newBoolValue = !$value;
-                if($newBoolValue != $oldValue) $this->SetValue('Value', $newBoolValue);
-            }
-        }            
-      
-        return true;
-    }
+    }    
 
     public function VariableSelected(int $ident) : bool
     {
         $this->SendDebug('VariableSelected', 'Ident: ' . $ident, 0);
-        //$sourceId = $this->ReadPropertyInteger('Source');
         $sourceType = IPS_GetVariable($ident)['VariableType'];
 
         switch($sourceType)
@@ -187,6 +207,8 @@ class Decoupler extends IPSModule
 
         $form = json_decode(file_get_contents(__DIR__ . "/form.json"));
         
+        $isNumberVariable = $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT;
+
         $form = [
             'elements' => [
                 [ 
@@ -221,25 +243,37 @@ class Decoupler extends IPSModule
                     'type' => 'CheckBox',
                     'name' => 'IsLowFilterActive',
                     'caption' => $this->Translate('Low Filter Active'),
-                    'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                    'visible' => $isNumberVariable
                 ],
                 [ 
                     'type' => 'NumberSpinner',
                     'name' => 'LowFilterValue',
                     'caption' => $this->Translate('Low Filter Value'),
-                    'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                    'visible' => $isNumberVariable
                 ],
                 [
                     'type' => 'CheckBox',
                     'name' => 'IsHighFilterActive',
                     'caption' => $this->Translate('High Filter Active'),
-                    'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                    'visible' => $isNumberVariable
                 ],
                 [
                     'type' => 'NumberSpinner',
                     'name' => 'HighFilterValue',
                     'caption' => $this->Translate('High Filter Value'),
-                    'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                    'visible' => $isNumberVariable
+                ],
+                [
+                    'type' => 'CheckBox',
+                    'name' => 'IsMaxValueChangeActive',
+                    'caption' => $this->Translate('Max Value Change Active'),
+                    'visible' => $isNumberVariable
+                ],
+                [
+                    'type' => 'NumberSpinner',
+                    'name' => 'MaxValueChange',
+                    'caption' => $this->Translate('Max Value Change'),
+                    'visible' => $isNumberVariable
                 ],
                 [ 
                     'type' => 'CheckBox',

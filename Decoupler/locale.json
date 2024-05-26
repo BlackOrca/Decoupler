@@ -11,6 +11,8 @@
             "Low Filter Value": "Unterer Filter Wert",
             "High Filter Active": "Oberen Filter nutzen",
             "High Filter Value": "Oberer Filter Wert",
+            "Max Value Change": "Maximale Wertänderung",
+            "Max Value Change Active": "Maximale Wertänderung nutzen",
             "Filter all values lower then this value": "Filtert alle Werte Kleiner-Gleich",
             "Filter all values higher then this value": "Filtert alle Werte Größer-Gleich",
             "Protect from Type or Profile Changing.": "Schütze die Entkoppelte Variable vor Typ und Profiländerung von der Quelle.",

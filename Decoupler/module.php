@@ -182,7 +182,7 @@ class Decoupler extends IPSModule
                         [ //0
                             'type' => 'CheckBox',
                             'name' => 'IsSelectedTypeLocked',
-                            'caption' => $this->Translate('Lock Selected Type')
+                            'caption' => $this->Translate('Protect from Type or Profile Changing.')
                         ],
                         [ //1                        
                             'type' => 'Label',

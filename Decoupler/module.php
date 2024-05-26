@@ -156,11 +156,10 @@ class Decoupler extends IPSModule
 
     public function GetConfigurationForm()
     {
-        //$form = json_decode(file_get_contents(__DIR__ . '/form.json'), true);
-
         $sourceId = $this->ReadPropertyInteger('Source');
         $variableLocked = $this->ReadPropertyBoolean('IsSelectedTypeLocked');
         $sourceType = IPS_GetVariable($sourceId)['VariableType'];
+        $invertValue = $this->ReadPropertyBoolean('UseValueInverting');
         
         $form = [
             'elements' => [
@@ -171,7 +170,7 @@ class Decoupler extends IPSModule
                             'type' => 'CheckBox',
                             'name' => 'IsSelectedTypeLocked',
                             'caption' => 'Lock Selected Type',
-                            'value' => $variableLocked
+                            'value' => \$variableLocked
                         ],
                         [ //1                        
                             'type' => 'Label',
@@ -193,7 +192,7 @@ class Decoupler extends IPSModule
                                 1,
                                 2
                             ],
-                            'value' => $sourceId
+                            'value' => \$sourceId
                         ],
                         [ //1
                             'type' => 'Label',
@@ -210,13 +209,13 @@ class Decoupler extends IPSModule
                             'type' => 'CheckBox',
                             'name' => 'IsLowFilterActive',
                             'caption' => 'Low Filter Active',
-                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                            'visible' => \$sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
                         ],
                         [ //1
                             'type' => 'NumberSpinner',
                             'name' => 'LowFilterValue',
                             'caption' => 'Low Filter Value',
-                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                            'visible' => \$sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
                         ]
                     ]
                 ],
@@ -227,20 +226,21 @@ class Decoupler extends IPSModule
                             'type' => 'CheckBox',
                             'name' => 'IsHighFilterActive',
                             'caption' => 'High Filter Active',
-                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                            'visible' => \$sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
                         ],
                         [
                             'type' => 'NumberSpinner',
                             'name' => 'HighFilterValue',
                             'caption' => 'High Filter Value',
-                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                            'visible' => \$sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
                         ]
                     ]
                 ],
                 [ //4
                     'type' => 'CheckBox',
                     'name' => 'UseValueInverting',
-                    'caption' => 'Use Value Inverting'
+                    'caption' => 'Use Value Inverting',
+                    'value' => \$invertValue
                 ]                
             ],
             'actions' => [
@@ -265,6 +265,6 @@ class Decoupler extends IPSModule
             ]
         ];   
 
-        return json_encode($form);
+        return JSON_encode($form);
     }
 }

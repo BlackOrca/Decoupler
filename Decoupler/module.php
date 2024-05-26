@@ -176,61 +176,62 @@ class Decoupler extends IPSModule
                             'width' => '80%'
                         ]
                     ]
-                ],
-                [ //1
-                    'type' => 'RowLayout',
-                    'items' => [                        
-                        [ //0
-                            'type' => 'SelectVariable',
-                            'caption' => 'Source Variable',
-                            'name' => 'Source',
-                            'validVariableTypes' => [
-                                0,
-                                1,
-                                2
-                            ]
-                        ],
-                        [ //1
-                            'type' => 'Label',
-                            'caption' => 'Supported are Integer, Float and Boolean.',
-                            'italic' => true,
-                            'width' => '80%'
-                        ]
-                    ]
-                ],
-                [ //2
-                    'type' => 'RowLayout',
-                    'items' => [
-                        // [ //0
-                        //     'type' => 'CheckBox',
-                        //     'name' => 'IsLowFilterActive',
-                        //     'caption' => 'Low Filter Active',
-                        //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                        // ],
-                        // [ //1
-                        //     'type' => 'NumberSpinner',
-                        //     'name' => 'LowFilterValue',
-                        //     'caption' => 'Low Filter Value',
-                        //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                        // ]
-                    ]
-                ],
-                [ //3
-                    'type' => 'RowLayout',
-                    'items' => [
-                        // [
-                        //     'type' => 'CheckBox',
-                        //     'name' => 'IsHighFilterActive',
-                        //     'caption' => 'High Filter Active',
-                        //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                        // ],
-                        // [
-                        //     'type' => 'NumberSpinner',
-                        //     'name' => 'HighFilterValue',
-                        //     'caption' => 'High Filter Value',
-                        //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                        // ]
-                    ]
+                ]
+                // ,
+                // [ //1
+                //     'type' => 'RowLayout',
+                //     'items' => [                        
+                //         [ //0
+                //             'type' => 'SelectVariable',
+                //             'caption' => 'Source Variable',
+                //             'name' => 'Source',
+                //             'validVariableTypes' => [
+                //                 0,
+                //                 1,
+                //                 2
+                //             ]
+                //         ],
+                //         [ //1
+                //             'type' => 'Label',
+                //             'caption' => 'Supported are Integer, Float and Boolean.',
+                //             'italic' => true,
+                //             'width' => '80%'
+                //         ]
+                //     ]
+                // ],
+                // [ //2
+                //     'type' => 'RowLayout',
+                //     'items' => [
+                //         // [ //0
+                //         //     'type' => 'CheckBox',
+                //         //     'name' => 'IsLowFilterActive',
+                //         //     'caption' => 'Low Filter Active',
+                //         //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                //         // ],
+                //         // [ //1
+                //         //     'type' => 'NumberSpinner',
+                //         //     'name' => 'LowFilterValue',
+                //         //     'caption' => 'Low Filter Value',
+                //         //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                //         // ]
+                //     ]
+                // ],
+                // [ //3
+                //     'type' => 'RowLayout',
+                //     'items' => [
+                //         // [
+                //         //     'type' => 'CheckBox',
+                //         //     'name' => 'IsHighFilterActive',
+                //         //     'caption' => 'High Filter Active',
+                //         //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                //         // ],
+                //         // [
+                //         //     'type' => 'NumberSpinner',
+                //         //     'name' => 'HighFilterValue',
+                //         //     'caption' => 'High Filter Value',
+                //         //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                //         // ]
+                //     ]
                 ],
                 [ //4
                     'type' => 'CheckBox',
@@ -260,6 +261,6 @@ class Decoupler extends IPSModule
             ]
         ];   
 
-        return JSON_encode($form);
+        return json_encode($form);
     }
 }

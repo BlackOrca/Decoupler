@@ -197,25 +197,25 @@ class Decoupler extends IPSModule
                             'width' => '80%'
                         ]
                     ]
+                ],
+                [ //2
+                    'type' => 'RowLayout',
+                    'items' => [
+                        [ //0
+                            'type' => 'CheckBox',
+                            'name' => 'IsLowFilterActive',
+                            'caption' => 'Low Filter Active',
+                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                        ],
+                        [ //1
+                            'type' => 'NumberSpinner',
+                            'name' => 'LowFilterValue',
+                            'caption' => 'Low Filter Value',
+                            'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
+                        ]
+                    ]
                 ]
                 //,
-                // [ //2
-                //     'type' => 'RowLayout',
-                //     'items' => [
-                //         // [ //0
-                //         //     'type' => 'CheckBox',
-                //         //     'name' => 'IsLowFilterActive',
-                //         //     'caption' => 'Low Filter Active',
-                //         //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                //         // ],
-                //         // [ //1
-                //         //     'type' => 'NumberSpinner',
-                //         //     'name' => 'LowFilterValue',
-                //         //     'caption' => 'Low Filter Value',
-                //         //     'visible' => $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT
-                //         // ]
-                //     ]
-                // ],
                 // [ //3
                 //     'type' => 'RowLayout',
                 //     'items' => [

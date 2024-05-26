@@ -210,7 +210,7 @@ class Decoupler extends IPSModule
         
         $isNumberVariable = $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT;
 
-        $form = [
+        $form[] = [
             'elements' => [
                 [ 
                     'type' => 'CheckBox',

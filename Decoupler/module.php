@@ -85,15 +85,18 @@ class Decoupler extends IPSModule
 
     private function FilterNumber($value): bool
     {
-        $ignoreValues = @json_decode($this->ReadPropertyString('ListOfIgnoreValues'));
-        
-        if($ignoreValues !== false)
+        $str = $this->ReadPropertyString('ListOfIgnoreValues');
+        if($str != "")
         {
-            foreach($ignoreValues as $ignoreValue)
+            $ignoreValues = @json_decode($str);
+            
+            if($ignoreValues !== false)
             {
-                //IPS_LogMessage('Decoupler', 'IgnoreValue: ' . $ignoreValue);
-                if($value == $ignoreValue->Value)
-                    return false;
+                foreach($ignoreValues as $ignoreValue)
+                {
+                    if($value == $ignoreValue->Value)
+                        return false;
+                }
             }
         }
 

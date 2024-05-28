@@ -234,12 +234,15 @@ class Decoupler extends IPSModule
     public function GetConfigurationForm()
     {
         $sourceId = $this->ReadPropertyInteger('Source');
-        $sourceType = IPS_GetVariable($sourceId)['VariableType'];        
+        $isNumberVariable = false;
         
-        $isNumberVariable = $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT;
-
+        if($sourceId != 0)
+        {        
+            $sourceType = IPS_GetVariable($sourceId)['VariableType'];       
+            $isNumberVariable = $sourceType == VARIABLETYPE_INTEGER || $sourceType == VARIABLETYPE_FLOAT;
+        }
+        
         $form = json_decode(file_get_contents(__DIR__ . "/form.json"));
-
         $form->elements[4]->visible = $isNumberVariable;
         $form->elements[5]->visible = $isNumberVariable;
         $form->elements[6]->visible = $isNumberVariable;
